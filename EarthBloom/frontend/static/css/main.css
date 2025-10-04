@@ -1,0 +1,340 @@
+/* ========================================
+   MAIN.CSS — Estilos globales y fundamentales
+   EarthBloom x NASA Space Apps Challenge
+   ======================================== */
+
+/* --- Importar fuentes oficiales (Fira Sans, Overpass) --- */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700;900&family=Overpass:wght@300;400;600&display=swap');
+
+/* --- Variables de color (Space Apps + EarthBloom) --- */
+:root {
+  --primary-teal: #02a0a0;
+  --primary-teal-dark: #00989e;
+  --electric-blue: #0042a6;
+  --deep-blue: #07173f;
+  --neon-yellow: #eafe07;
+  --rocket-red: #e43700; /* Para errores o alertas */
+  --white: #ffffff;
+  --light-bg: #f3fbfb; /* Fondo claro para secciones */
+  --text-dark: #07173f; /* Color de texto principal */
+}
+
+/* --- Base global --- */
+body {
+  margin: 0;
+  font-family: "Overpass", sans-serif;
+  color: var(--text-dark);
+  background-color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Fira Sans", sans-serif;
+  color: var(--deep-blue);
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; font-weight: 900; }
+h2 { font-size: 2rem; font-weight: 900; }
+h3 { font-size: 1.8rem; font-weight: 700; }
+h4 { font-size: 1.4rem; font-weight: 700; }
+p { margin-bottom: 1em; }
+
+a {
+  color: var(--primary-teal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--neon-yellow);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* --- Contenedor de contenido principal --- */
+.content-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Header --- */
+.header {
+  background: linear-gradient(90deg, var(--primary-teal), var(--primary-teal-dark));
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 45px; /* Tamaño del logo */
+}
+
+.site-title {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: 0.05rem;
+  color: var(--white);
+}
+
+/* --- Navegación --- */
+.nav ul {
+  display: flex;
+  gap: 25px;
+}
+
+.nav a {
+  color: var(--white);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.nav a:hover {
+  color: var(--neon-yellow);
+}
+
+/* --- Hero Section (para index.html) --- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+  text-align: center;
+  height: 80vh; /* Altura de la sección hero */
+  background: linear-gradient(45deg, var(--primary-teal) 0%, var(--primary-teal-dark) 50%, var(--electric-blue) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.15), transparent 60%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  font-size: 3.5rem;
+  color: var(--white);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  max-width: 700px;
+  margin: 0 auto 35px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.decorative-pattern {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 40%; /* Tamaño del patrón */
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none; /* Para que no interfiera con clics */
+}
+
+/* --- Botones de Llamada a la Acción (CTA) --- */
+.cta-btn {
+  background-color: var(--neon-yellow);
+  border: none;
+  color: var(--deep-blue);
+  padding: 14px 30px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block; /* Para que padding y margin funcionen bien */
+}
+
+.cta-btn:hover {
+  background-color: #d4e006; /* Tono más oscuro de Neon Yellow */
+  transform: translateY(-2px);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  border: 2px solid var(--neon-yellow);
+  color: var(--neon-yellow);
+}
+
+.cta-btn.secondary:hover {
+  background: var(--neon-yellow);
+  color: var(--deep-blue);
+}
+
+/* --- Secciones generales --- */
+.section {
+  padding: 80px 0; /* Padding vertical, horizontal lo maneja content-container */
+  text-align: center;
+}
+
+.section.light {
+  background-color: var(--white);
+  color: var(--text-dark);
+}
+
+.section.dark {
+  background-color: var(--deep-blue);
+  color: var(--white);
+}
+
+.section h3 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: inherit; /* Hereda el color de la sección (dark/light) */
+}
+
+.section.dark h3 {
+  color: var(--white);
+}
+
+/* --- Grid de características (ej. en index.html) --- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05); /* Fondo sutil para cards en secciones oscuras */
+  border: 2px solid var(--primary-teal);
+  padding: 25px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  text-align: left;
+}
+
+.section.dark .feature-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary-teal-dark);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--neon-yellow);
+}
+
+.feature-card h4 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary-teal);
+  margin-bottom: 10px;
+}
+
+.section.dark .feature-card h4 {
+  color: var(--neon-yellow);
+}
+
+.feature-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: inherit;
+}
+
+/* --- Footer --- */
+.footer {
+  background: linear-gradient(90deg, var(--primary-teal-dark), var(--primary-teal));
+  color: var(--white);
+  text-align: center;
+  padding: 25px;
+  font-size: 0.9rem;
+  letter-spacing: 0.03rem;
+}
+
+/* --- Responsive Design para elementos globales --- */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .nav ul {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .decorative-pattern {
+    width: 60%;
+    bottom: -40px;
+    right: -40px;
+  }
+
+  .section h3 {
+    font-size: 1.8rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 1.4rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* --- Accesibilidad: Contraste y Focus States --- */
+a:focus,
+.cta-btn:focus,
+.feature-card:focus {
+  outline: 3px solid var(--neon-yellow);
+  outline-offset: 3px;
+}

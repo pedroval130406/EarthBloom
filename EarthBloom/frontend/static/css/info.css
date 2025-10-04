@@ -1,0 +1,371 @@
+/* ========================================
+   INFO.CSS — Estilos específicos para páginas informativas
+   EarthBloom x NASA Space Apps Challenge
+   ======================================== */
+
+/* --- Importar variables de main.css (si no se importó main.css directamente) --- */
+/* Si main.css ya está enlazado en el HTML, estas variables ya estarán disponibles.
+   Si info.css se usa solo, se deberían definir aquí o importar main.css.
+   Para este setup, asumimos que main.css se carga primero. */
+
+/* ========================================
+   HERO ALTERNATIVO (para páginas internas como about.html)
+   ======================================== */
+.hero-alt {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-teal) 0%, var(--electric-blue) 100%);
+  color: var(--white);
+  text-align: center;
+  padding: 120px 40px 80px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh; /* Altura mínima para hero alternativo */
+}
+
+.hero-alt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/Rosette.png');
+  background-size: 50%; /* Tamaño del patrón */
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.15; /* Opacidad sutil */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-alt-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+}
+
+.hero-alt h2 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 900;
+  font-size: 2.8rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.hero-alt p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+/* ========================================
+   SECCIONES CON PATRÓN DE FONDO (ej. para "Datos" o "Contacto" en index.html)
+   ======================================== */
+.section-pattern {
+  position: relative;
+  background-color: var(--light-bg); /* Fondo claro para contraste */
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.section-pattern::after {
+  content: "";
+  position: absolute;
+  bottom: -100px; /* Posición del patrón */
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background-image: url('../images/Rosette.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.08; /* Opacidad muy sutil */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section-pattern .content-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   CARDS INFORMATIVAS (con hover, para "Aplicaciones" o "Módulos")
+   ======================================== */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.info-card {
+  background: var(--white);
+  border: 2px solid var(--primary-teal);
+  border-radius: 12px;
+  padding: 30px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(2, 160, 160, 0.3);
+  border-color: var(--neon-yellow);
+}
+
+.info-card h4 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--primary-teal);
+  margin-bottom: 12px;
+}
+
+.info-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* ========================================
+   TIMELINE (para historia o roadmap del proyecto)
+   ======================================== */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 60px auto;
+  padding-left: 40px;
+  text-align: left; /* Alineación del texto dentro del timeline */
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--primary-teal), var(--electric-blue));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 30px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background: var(--neon-yellow);
+  border: 3px solid var(--primary-teal);
+  border-radius: 50%;
+  z-index: 1; /* Asegura que el círculo esté sobre la línea */
+}
+
+.timeline-item h5 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  color: var(--primary-teal);
+  margin-bottom: 8px;
+}
+
+.timeline-item p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+/* ========================================
+   SECCIÓN DE EQUIPO (Team cards)
+   ======================================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.team-card {
+  background: var(--white);
+  border: 2px solid var(--primary-teal-dark);
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 152, 158, 0.25);
+}
+
+.team-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid var(--neon-yellow);
+}
+
+.team-card h4 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 5px;
+}
+
+.team-card p {
+  font-size: 0.9rem;
+  color: var(--primary-teal);
+  margin-bottom: 10px;
+}
+
+.team-card a {
+  color: var(--electric-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.team-card a:hover {
+  color: var(--neon-yellow);
+}
+
+/* ========================================
+   SECCIÓN DE ESTADÍSTICAS (números destacados)
+   ======================================== */
+.stats-section {
+  background: linear-gradient(135deg, var(--deep-blue), var(--electric-blue));
+  color: var(--white);
+  padding: 60px 0;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.stat-item h3 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--neon-yellow);
+  margin-bottom: 10px;
+}
+
+.stat-item p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* ========================================
+   CALL TO ACTION (CTA destacado)
+   ======================================== */
+.cta-section {
+  background: var(--light-bg);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta-section h3 {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--deep-blue);
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN para elementos de info.css
+   ======================================== */
+@media (max-width: 768px) {
+  .hero-alt h2 {
+    font-size: 2rem;
+  }
+
+  .hero-alt p {
+    font-size: 1rem;
+  }
+
+  .info-cards,
+  .team-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline-item {
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    left: -5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-alt h2 {
+    font-size: 1.8rem;
+  }
+  .stats-grid {
+    gap: 20px;
+  }
+  .stat-item h3 {
+    font-size: 2.5rem;
+  }
+}
+
+/* ========================================
+   ANIMACIONES SUTILES
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* ========================================
+   ACCESIBILIDAD
+   ======================================== */
+.info-card:focus,
+.team-card:focus,
+.cta-section .cta-btn:focus { /* Específico para CTA en info.css */
+  outline: 3px solid var(--neon-yellow);
+  outline-offset: 3px;
+}

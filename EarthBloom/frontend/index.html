@@ -1,56 +1,154 @@
-<!-- frontend/templates/index.html -->
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>EarthBloom — Observa el florecer de la Tierra</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-</head>
-<body>
-  <header>
-    <img src="{{ url_for('static', filename='images/EarthBloom_logo.png') }}" class="logo">
-    <h1>Observa el florecer de la Tierra</h1>
-  </header>
-  
-  <main>
-    <aside id="control-panel">
-      <label>Selecciona fecha:</label>
-      <input type="date" id="datePicker">
-      <label>O elige estación:</label>
-      <select id="season">
-        <option>Primavera</option>
-        <option>Verano</option>
-        <option>Otoño</option>
-        <option>Invierno</option>
-      </select>
-      <button onclick="loadBloom()">Analizar floración</button>
-    </aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EarthBloom | Observa el florecer de la Tierra</title>
 
-    <div id="map"></div>
-  </main>
+    <!-- Tipografía oficial Space Apps -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700;900&family=Overpass:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <script>
-    const map = L.map('map').setView([19.4, -99.1], 6);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    <!-- Estilo principal -->
+    <link rel="stylesheet" href="static/css/main.css" />
+  </head>
 
-    async function loadBloom() {
-      const date = document.getElementById('datePicker').value;
-      const season = document.getElementById('season').value;
-      const res = await fetch(`/get_bloom?date=${date}&season=${season}`);
-      const data = await res.json();
+  <body>
+    <!-- 🔷 HEADER -->
+    <header class="header">
+      <div class="logo-container">
+        <img
+          src="static/images/logo_1.png"
+          alt="EarthBloom Logo"
+          class="logo"
+        />
+        <h1 class="site-title">EarthBloom</h1>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="#about">Sobre</a></li>
+          <li><a href="#data">Datos</a></li>
+          <li><a href="#apps">Aplicaciones</a></li>
+          <li><a href="dashboard.html">Demo</a></li>
+          <li><a href="about.html">Equipo</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
 
-      L.geoJSON(data, {
-        style: f => ({
-          color: getColor(f.properties.bloom_probability),
-          fillOpacity: 0.6
-        })
-      }).addTo(map);
-    }
+    <!-- 🌌 HERO SECTION -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2 class="hero-title">Observa el florecer de la Tierra</h2>
+        <p class="hero-subtitle">
+          Predice y visualiza los eventos de floración y desplazamiento de
+          polinizadores con los ojos de la NASA.
+        </p>
+        <a href="dashboard.html" class="cta-btn">Explorar Demo</a>
+      </div>
+      <img
+        src="static/images/Rosette.png"
+        alt="Rosette Pattern"
+        class="decorative-pattern"
+      />
+    </section>
 
-    function getColor(prob) {
-      return prob > 0.8 ? '#EAFE07' : prob > 0.6 ? '#00C896' : '#006C74';
-    }
-  </script>
-</body>
+    <!-- 🛰️ SOBRE -->
+    <section id="about" class="section light">
+      <div class="content-container">
+        <h3>¿Qué es EarthBloom?</h3>
+        <p>
+          <strong>EarthBloom</strong> es una herramienta basada en observación
+          satelital que utiliza datos abiertos de la NASA para mapear el
+          florecimiento de plantas a diferentes escalas y predecir el
+          movimiento de polinizadores. Conecta la ciencia espacial con la
+          biodiversidad terrestre.
+        </p>
+      </div>
+    </section>
+
+    <!-- 🔬 DATOS NASA -->
+    <section id="data" class="section dark">
+      <div class="content-container">
+        <h3>Datos y Ciencia de la NASA</h3>
+        <ul>
+          <li>
+            <strong>HLS (Harmonized Landsat Sentinel)</strong> — NDVI y EVI
+            para monitorear cambios en vegetación.
+          </li>
+          <li>
+            <strong>MODIS / VIIRS</strong> — Reflectancia BRDF y color real de
+            la superficie.
+          </li>
+          <li>
+            <strong>NASA POWER</strong> — Datos climáticos diarios (temperatura
+            y precipitación).
+          </li>
+          <li>
+            <strong>ERA5</strong> — Pronósticos estacionales climáticos.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 🌸 APLICACIONES -->
+    <section id="apps" class="section light">
+      <div class="content-container">
+        <h3>Aplicaciones</h3>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h4>🌾 Agricultura</h4>
+            <p>
+              Optimiza la gestión de cultivos anticipando periodos de floración
+              y riesgo climático.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h4>🐝 Polinizadores</h4>
+            <p>
+              Comprende la relación entre las rutas de forrajeo y los patrones
+              de floración regionales.
+            </p>
+          </div>
+          <div class="feature-card">
+            <h4>🌿 Conservación</h4>
+            <p>
+              Apoya la restauración de ecosistemas midiendo la salud y
+              fenología de la vegetación.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✉️ CONTACTO -->
+    <section id="contact" class="section dark">
+      <div class="content-container">
+        <h3>👩‍🚀 Colabora con nosotros</h3>
+        <p>
+          EarthBloom forma parte del
+          <strong>NASA International Space Apps Challenge</strong>.  
+          Si deseas colaborar, integrar datos locales o proponer nuevas
+          funcionalidades, visita nuestro repositorio.
+        </p>
+        <a
+          href="https://github.com/pedro-val1304/EarthBloom"
+          target="_blank"
+          class="cta-btn secondary"
+          >Ver en GitHub</a
+        >
+      </div>
+    </section>
+
+    <!-- 🚀 FOOTER -->
+    <footer class="footer">
+      <p>
+        © 2025 EarthBloom — Powered by NASA Open Data | International Space
+        Apps Challenge
+      </p>
+    </footer>
+  </body>
 </html>
